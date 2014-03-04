@@ -67,11 +67,11 @@ Probably not. Lack of communication, lack of planning, situational circumstances
 Command Line Interface
 
 #### 2. What is the difference between the following commands? Explain each one basically.
-	* a. cd ~ _Move into home directory_
-	* b. cd ~/ _Same as "a". Can move user to the home directory and into a specified directory_
-	* c. cd . _Transfer over to the very same directory you're currently situated_
-	* d. cd .. _Move up to parent directory_
-	* e. cd / _Takes user to root directory_ *
+*  a. 'cd ~' _Move into home directory_
+*  b. 'cd ~/' _Same as "a". Can move user to the home directory and into a specified directory_
+*  c. 'cd .' _Transfer over to the very same directory you're currently situated_
+*  d. 'cd ..' _Move up to parent directory_
+*  e. 'cd /' _Takes user to root directory_ *
 
 #### 3. In the following command, the first word is called the command, what is the remaining part called? mkdir -­p
 
