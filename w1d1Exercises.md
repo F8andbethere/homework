@@ -53,7 +53,6 @@ Why won't ' wget -P /work www.lighthouselabs.ca/index.html' I keep getting permi
 
 Dev B should have pulled before making changes to the file.
 
-
 #### Question 2: Given your answer in Q1, does this mean that merge conflicts can be completely avoided in the real world? Why or why not?
 
 Probably not. Lack of communication, lack of planning, situational circumstances and human error are going to create instances where a series of unfortunate events will present conflicts needing some resolving.
@@ -78,12 +77,12 @@ Command Line Interface
 Flag, and ultimately an argument
 
 #### 4. What are the following commands doing? What is the difference between them? You may recall them from earlier today.
-	*a. cat /usr/share/dict/words | grep "ous$" _Lists the dictionary words that only end in 'ous'_
-	*b. cat /usr/share/dict/words | grep "ous$" | wc ­-l _Outputs the numbers of words in the dictionary that only end in 'ous'_
+*  a. 'cat /usr/share/dict/words | grep "ous$"' _Lists the dictionary words that only end in 'ous'_
+*  b. 'cat /usr/share/dict/words | grep "ous$"' | wc ­-l _Outputs the numbers of words in the dictionary that only end in 'ous'_
 
 #### 5. Given the grep command from the previous question: grep "ous$"
-	*a. What is the dollar sign being used for in the grep commands above? What happens if we don’t use it? _The $ grabs words that ONLY end in 'ous'; if we don't use it it will grab all wouds that include 'ous' regardless of position_
-	*b. This argument for grep ("ous$"), contained within the double quotes, is more than just a string. What is this type of expression called? _It's a regular expression_
+*  a. What is the dollar sign being used for in the grep commands above? What happens if we don’t use it? _The $ grabs words that ONLY end in 'ous'; if we don't use it it will grab all wouds that include 'ous' regardless of position_
+*  b. This argument for grep ("ous$"), contained within the double quotes, is more than just a string. What is this type of expression called? _It's a regular expression_
 
 #### 6. What does the | symbol, used in some of the Part 2 commands, do in Unix?
 
