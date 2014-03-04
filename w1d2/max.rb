@@ -1,18 +1,14 @@
 #Homebrew method to find the max value entry in an array
-def homebrewMax (arrMine)
+def homebrew_max (arr_mine)
+  max = arr_mine.first
 
-  max = arrMine.first
-
-  for i in 0..arrMine.length - 1
-
-    if arrMine[i] > max
-      max = arrMine[i]
-    end
-
+  for i in 0..arr_mine.length - 1
+    max = arr_mine[i] if arr_mine[i] > max
   end
 
-  return max
+  max
 end
 
-result = homebrewMax([1, 2, 3, 4, 1, 20, 13, -3, -16])
+result = homebrew_max([1, 2, 3, 4, 1, 20, 13, -3, -16])
+
 puts "Max value in the array is #{result}"
