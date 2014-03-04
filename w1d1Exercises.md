@@ -1,6 +1,6 @@
-#-------------
-#Unix command line rockstar
-#-------------
+###-------------
+###Unix command line rockstar
+###-------------
 #### 1. Write a command that will output the number of times the cat command was used previously
 
 Two command solution
@@ -45,9 +45,9 @@ www.lighthouselabs.ca/index.html
 
 Why won't ' wget -P /work www.lighthouselabs.ca/index.html' I keep getting permission not granted.
 
-#-------------
-#Git conflicts
-#-------------
+###-------------
+###Git conflicts
+###-------------
 
 #### Question 1: During this linear process, where Dev B changed the document after Dev A had already committed and pushed their change to the remote (github), what extra step(s) could Developer B have taken to completely avoid this merge conflict?
 
@@ -58,9 +58,9 @@ Dev B should have pulled before making changes to the file.
 
 Probably not. Lack of communication, lack of planning, situational circumstances and human error are going to create instances where a series of unfortunate events will present conflicts needing some resolving.
 
-# -------------
-# Homework
-# -------------
+###-------------
+###Homework
+###-------------
 
 #### 1. What does CLI stand for?
 
@@ -111,11 +111,11 @@ Conflicts occur when multiple changes have been made on the same part of a file 
 
 Conflicts protect ode from being overwritten when multiple people make changes to the same content/files. Git will try to automerge the conflicts but will require user intervention to resovle conflicts when the same LoC have been changed by different users.
 
-######## 12. What is the difference between a git commit and a git push?
+#### 12. What is the difference between a git commit and a git push?
 
 'git commit' transfers files to the stage while 'git push' transfers files to the repo.
 
-######## 13. In git, what is the purpose of the .gitignore and .gitkeep (or .keep) files?
+#### 13. In git, what is the purpose of the .gitignore and .gitkeep (or .keep) files?
 
 '.gitignore' are files that git will ignore when updating/adding.
 
