@@ -36,9 +36,7 @@ def equation_validator(player_answer, equation_answer)
   player_answer == equation_answer
 end
 
-def random_number
-  rand(0..20)
-end
+
 
 def answer_right_or_wrong(player_answer, equation_answer)
   equation_validator(player_answer, @equation_answer) ? 
