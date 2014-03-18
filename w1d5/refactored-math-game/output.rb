@@ -11,14 +11,13 @@ def text_color(colorized_text_output)
   puts @current_player_is == 0 ? colorized_text_output.blue : colorized_text_output.yellow
 end
 
-def pose_player_question(equation_to_pose)
+def pose_player_question
   puts %/
   Here's where you sling your math skills, #{current_player_name}:
-  #{equation_to_pose}
+  #{@equation_as_string}
   /
   
   text_color(%/So, #{current_player_name}, what's your best guess, champ?/)
-  gets.chomp.to_i
 end
 
 def does_player_want_to_quit

@@ -24,11 +24,11 @@ def player_turn
   while game_state == true
     current_player_switch
 
-    equation_generator(random_number(0, 20), random_operator('+', '-', '*', '/'), random_number(0, 20))
-
-    validated_equation = equation_validator?(pose_player_question(@equation_as_string), @evaluated_equation)
+    equation_generator
     
-    if validated_equation == false
+    pose_player_question
+
+    if !player_answer_correct?(get_player_answer)
       wrong_answer
     else
       puts "Cool. Awesome. Next!"
@@ -48,7 +48,11 @@ def player_turn
     end
   end
 
-  player_wants_to_play_again ? player_turn : game_end
+  if player_wants_to_play_again
+    player_turn
+  else
+    game_end
+  end
 end
 
 def reset

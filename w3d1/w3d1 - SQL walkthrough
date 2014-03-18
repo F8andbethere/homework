@@ -1,0 +1,330 @@
+
+
+w3d1 Homework
+
+
+SELECT e.isbn, b.title
+  FROM editions AS e JOIN books AS b
+    ON (b.id = e.book_id)
+  WHERE (e.publisher_id = 59);
+
+SELECT * FROM editions;
+
+SELECT * FROM stock;
+
+SELECT e.isbn, b.title, e.type, e.edition
+  FROM editions AS e JOIN books AS b
+    ON (b.id = e.book_id)
+  WHERE (e.publisher_id = 59);
+
+
+
+Q4. 
+
+SELECT * FROM stock;
+
+SELECT e.isbn, b.title, e.type, e.edition, s.retail, s.stock
+  FROM editions AS e JOIN books AS b ON (b.id = e.book_id)
+    JOIN stock s ON s.isbn = e.isbn
+  WHERE (e.publisher_id = 59);
+
+---OR---
+
+SELECT e.isbn, b.title, e.type, e.edition, s.retail, s.stock
+  FROM editions AS e JOIN books AS b ON (b.id = e.book_id)
+    LEFT OUTTER JOIN stock s ON s.isbn = e.isbn
+  WHERE (e.publisher_id = 59);
+
+
+
+
+
+
+
+
+PG Webstuff
+
+SELECT cd.bookings.starttime
+FROM cd.bookings
+INNER JOIN cd.members
+ON cd.bookings.memid = cd.bookings.memid
+
+
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+INNER JOIN Customers
+ON Orders.CustomerID=Customers.CustomerID;
+
+
+
+
+
+
+
+SELECT bookings.starttime AS start, facilities.name AS facilities
+  FROM cd.bookings AS bookings
+  INNER JOIN cd.facilities AS facilities
+    ON bookings.facid = facilities.facid
+    
+  WHERE facilities.name LIKE '%Tennis Court%' AND 
+      bookings.starttime >= '2012-09-21' AND
+      bookings.starttime < '2012-09-22'
+
+    
+    ORDER BY bookings.starttime;
+
+
+
+SELECT  bookings.starttime 
+
+FROM  cd.bookings AS bookings
+    INNER JOIN cd.members AS members
+      ON members.memid = bookings.memid
+WHERE 
+    members.firstname='David' 
+    AND members.surname='Farrell';
+
+
+
+SELECT firstname, surname
+FROM cd.members
+WHERE firstname = (SELECT recommendedby, surname
+    FROM cd.members
+    WHERE 
+        recommendedby = surname
+    )
+
+SELECT firstname, surname, recommendedby
+FROM cd.members
+WHERE firstname = recommendedby
+
+SELECT  b.id AS "Book ID", 
+        b.title AS "Book Title", 
+        a.id AS "Author ID", 
+        (a.first_name || ' ' || a.last_name) AS "Author Full Name" 
+  
+  FROM books AS b, authors AS a 
+    
+    WHERE b.author_id = a.id;
+
+=======================
+QUESTIONS
+=======================
+
+1.
+Fetch ISBN of all book editions published by the publisher "Random House". You should have 3 results.
+
+SELECT isbn
+  FROM editions
+    WHERE publisher_id = 59;
+
+2.
+Instead of just their ISBN number, fetch their Book Title as well. You should still have the same 3 results but with more information. But instead of just one column, we should have 2 columns in the result set.
+
+SELECT DISTINCT   e.isbn, 
+                  b.title
+  FROM editions AS e 
+    INNER JOIN books AS b
+      ON (b.id = e.book_id)
+        WHERE publisher_id = 59;
+
+3.
+Also include their stock information (available stock and retail price for each book edition). You should still have the same 3 results but with more information. But instead of just 2 columns, we should have 4 columns in the result set.
+
+SELECT DISTINCT   e.isbn, 
+                  b.title,
+                  s.stock,
+                  s.retail
+  FROM editions AS e 
+    INNER JOIN books AS b
+      ON (b.id = e.book_id)
+        INNER JOIN stock AS s
+          ON (s.isbn = e.isbn)
+        WHERE publisher_id = 59;
+
+4.
+Note how one of the of books has 0 stock. Modify the query to only return books that are in stock.
+
+SELECT DISTINCT   e.isbn AS "ISBN", 
+                  b.title AS "TITLE",
+                  s.stock "STOCK",
+                  s.retail "RETAIL"
+  FROM editions AS e 
+    INNER JOIN books AS b
+      ON (b.id = e.book_id)
+        INNER JOIN stock AS s
+          ON (s.isbn = e.isbn)
+        WHERE (publisher_id = 59) AND (stock != 0);
+
+5.
+Hardcover vs Paperback
+
+Editions has a column called "type". Include the print type but instead of just displaying "h" or "p" (the values in the column) output the human readable types ("hardcover" and "paperback" accordingly)
+
+Hint: Use a CASE statement to manipulate your result set, as in this example.
+
+SELECT CASE 
+          WHEN type = 'h' THEN 'hardcover'
+          WHEN type = 'p' THEN 'paperback'
+          END AS "Type"
+FROM editions;
+
+
+OR
+
+
+SELECT DISTINCT   e.isbn AS "ISBN", 
+                  b.title AS "TITLE",
+                  s.stock "STOCK",
+                  s.retail "RETAIL",
+                  CASE 
+                  WHEN type = 'h' THEN 'hardcover'
+                  WHEN type = 'p' THEN 'paperback'
+                  END AS "TYPE"
+  FROM editions AS e 
+    INNER JOIN books AS b
+      ON (b.id = e.book_id)
+        INNER JOIN stock AS s
+          ON (s.isbn = e.isbn)
+        WHERE publisher_id = 59;
+
+
+OR
+
+
+
+
+SELECT DISTINCT   e.isbn AS "ISBN", 
+                  b.title AS "TITLE",
+                  s.stock "STOCK",
+                  s.retail "RETAIL",
+                  CASE 
+                  WHEN type = 'h' THEN 'hardcover'
+                  ELSE 'paperback'
+                  END AS "TYPE"
+  FROM editions AS e 
+    INNER JOIN books AS b
+      ON (b.id = e.book_id)
+        INNER JOIN stock AS s
+          ON (s.isbn = e.isbn)
+        WHERE publisher_id = 59;
+
+6. 
+List all book titles along with their publication dates (column on the editions dates) That's 2 columns: "title" and "publication"
+
+Important Notes:
+
+Certain books (such as "Learning Python") don't have any editions but we still want to see those books in the results. They just shouldn't have a publication date associated with them.
+Certain other books (such as "Dune") have multiple editions and they will be repeated multiple times in the result set.
+
+SELECT DISTINCT   b.title AS "TITLE", 
+                  e.publication AS "PUBLICATION DATE"
+  FROM books AS b JOIN editions AS e
+    ON (b.id = e.book_id);
+
+
+KHURRUM
+
+SELECT    b.title AS "TITLE",
+          e.publication AS "PUBLICATION DATE"
+  FROM books AS b LEFT OUTER JOIN editions AS e
+    ON (e.book_id = b.id);
+
+7.
+What's the total inventory of books in this library (i.e. how many total copies are in stock)?
+
+SELECT SUM(stock) AS "TOTAL INVENTORY"
+  FROM stock;
+
+SELECT    e.isbn AS "ISBN",
+          b.title AS "TITLE",
+          (s.stock * s.retail) AS "POTENTIAL PROFIT"
+  FROM books AS b 
+  INNER JOIN editions AS e
+    ON (b.id = e.book_id)
+      INNER JOIN stock AS s
+      ON (e.isbn = s.isbn)
+
+      WHERE (s.stock * s.retail) != 0;
+
+
+8.
+What is the overall average cost and retail price for all books for sale? Return three columns "Average cost", "Average Retail" and "Average Profit"
+
+SELECT  ROUND(AVG(s.cost), 2) AS "Average cost",
+        ROUND(AVG(s.retail), 2) AS "Average retail",
+        ROUND(AVG(s.retail - s.cost), 2) AS "Average Profit",
+        SUM(s.stock) AS "TOTAL INVENTORY"
+  FROM stock AS s;
+
+9.
+Which book ID has the most pieces in stock?
+
+Hints: 
+1. Use an aggregate function combined with LIMIT and ORDER BY clauses. 
+2. No need to join with the books table since we just want the ID which is already in the editions table.
+
+SELECT e.book_id AS "Book ID", COUNT(s.stock) AS "Stock"
+  FROM editions AS e JOIN stock AS s
+    ON(e.isbn = s.isbn)
+      GROUP BY e.book_id
+    ORDER By e.book_id
+    LIMIT 1;
+
+10.
+List author ID along with the number of books they have written. Output 2 columns: "Full name" and "Number of Books"
+
+SELECT      a.id AS "ID", 
+            (a.first_name || ' ' || a.last_name) AS "AUTHOR",
+            COUNT(b.title) AS "NUMBER OF BOOKS"
+  FROM authors AS a JOIN books AS b
+    ON (a.id = b.author_id)
+
+  GROUP BY a.id
+  ;
+
+11.
+Order the result set above by number of books so that authors with most number of books appear atop the list (descending order).
+
+SELECT      a.id AS "ID", 
+            (a.first_name || ' ' || a.last_name) AS "AUTHOR",
+            COUNT(b.title) AS "NUMBER OF BOOKS"
+  FROM authors AS a JOIN books AS b
+    ON (a.id = b.author_id)
+
+  GROUP BY a.id
+  ORDER BY COUNT(b.title) DESC
+  ;
+
+12.
+List books that have both paperback and hardcover editions. That means at least one edition of the book in both formats.
+
+The result contains four books:
+
+The Shining
+Dune
+2001: A Space Odyssey
+The Cat in the Hat
+
+SELECT DISTINCT     b.title AS "TITLE"
+  FROM books AS b JOIN editions AS e
+  ON (b.id = e.book_id)
+
+  WHERE e.type IN ('h') AND e.type IN ('h')
+;
+
+13.
+For each publisher, list their average book sale price, number of editions published.
+
+SELECT        p.name AS "PUBLISHER",
+              SUM(e.edition) AS "EDITIONS PUBLISHED",
+              ROUND(AVG(s.retail), 2) AS "AVERAGE SALE PRICE OF BOOKS"
+  FROM publishers AS p JOIN editions AS e
+    ON(p.id = e.publisher_id)
+
+  JOIN stock AS s
+    ON(e.isbn = s.isbn)
+
+    GROUP BY p.name
+
+;

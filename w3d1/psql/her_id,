@@ -1,0 +1,49 @@
+    isbn    | publisher_id |            title            
+------------+--------------+-----------------------------
+ 039480001X |           59 | The Shining
+ 0394800753 |           59 | The Shining
+ 0394900014 |           59 | The Shining
+ 039480001X |           59 | Dune
+ 0394800753 |           59 | Dune
+ 0394900014 |           59 | Dune
+ 039480001X |           59 | 2001: A Space Odyssey
+ 0394800753 |           59 | 2001: A Space Odyssey
+ 0394900014 |           59 | 2001: A Space Odyssey
+ 039480001X |           59 | The Cat in the Hat
+ 0394800753 |           59 | The Cat in the Hat
+ 0394900014 |           59 | The Cat in the Hat
+ 039480001X |           59 | Bartholomew and the Oobleck
+ 0394800753 |           59 | Bartholomew and the Oobleck
+ 0394900014 |           59 | Bartholomew and the Oobleck
+ 039480001X |           59 | Franklin in the Dark
+ 0394800753 |           59 | Franklin in the Dark
+ 0394900014 |           59 | Franklin in the Dark
+ 039480001X |           59 | Goodnight Moon
+ 0394800753 |           59 | Goodnight Moon
+ 0394900014 |           59 | Goodnight Moon
+ 039480001X |           59 | Little Women
+ 0394800753 |           59 | Little Women
+ 0394900014 |           59 | Little Women
+ 039480001X |           59 | The Velveteen Rabbit
+ 0394800753 |           59 | The Velveteen Rabbit
+ 0394900014 |           59 | The Velveteen Rabbit
+ 039480001X |           59 | Dynamic Anatomy
+ 0394800753 |           59 | Dynamic Anatomy
+ 0394900014 |           59 | Dynamic Anatomy
+ 039480001X |           59 | The Tell-Tale Heart
+ 0394800753 |           59 | The Tell-Tale Heart
+ 0394900014 |           59 | The Tell-Tale Heart
+ 039480001X |           59 | Programming Python
+ 0394800753 |           59 | Programming Python
+ 0394900014 |           59 | Programming Python
+ 039480001X |           59 | Learning Python
+ 0394800753 |           59 | Learning Python
+ 0394900014 |           59 | Learning Python
+ 039480001X |           59 | Perl Cookbook
+ 0394800753 |           59 | Perl Cookbook
+ 0394900014 |           59 | Perl Cookbook
+ 039480001X |           59 | Practical PostgreSQL
+ 0394800753 |           59 | Practical PostgreSQL
+ 0394900014 |           59 | Practical PostgreSQL
+(45 rows)
+

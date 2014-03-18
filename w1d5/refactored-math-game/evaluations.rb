@@ -6,39 +6,37 @@ def random_number(first_number, second_number)
   rand(first_number..second_number)
 end
 
-def random_operator(a, b, c, d)
-  operator_array = [a, b, c, d]
-  operator_array[rand(0...operator_array.length)]
+def random_operator(operators = ['+'])
+  operators[rand(0...operators.length)]
 end
 
-def equation_generator(random_number1, random_operator, random_number2)
+def equation_generator
+  first_number = random_number(0, 20)
+  second_number = random_number(0, 20)
+  operator = random_operator(['+', '-', '*', '/'])
 
-  puts "DEBUG STRING: #{@equation_as_string}"
-  
-  # divide_by_zero_test(random_number1, random_operator, random_number2)
+  if operator == '/'
+    check_whole_number_division(first_number, second_number)
+  end
 
-  @equation_as_string = "#{random_number1} " + "#{random_operator}" + " #{random_number2}"
-  
-  @evaluated_equation = eval(@equation_as_string)
-
-  # @evaluated_equation == Integer ? 
-  # "#{random_number1} " + "/" + " #{random_number2}" :
-  # @evaluated_equation = @evaluated_equation
-
+  @equation_as_string = "#{first_number} " + "#{operator}" + " #{second_number}"
+  @evaluated_equation = first_number.send(operator, second_number)
 end
 
-# def divide_by_zero_test(operator, potential_zero)
-#   if operator == '/' && potential_zero == 0
-
-# end
-
-def equation_validator?(player_answer, equation_answer)
-  player_answer == equation_answer
+def check_whole_number_division(first_number, second_number)
+  if (first_number % second_number).to_f == 0
+    equation_generator
+  end
 end
 
-# def validated_equation
 
-# end
+def player_answer_correct?(player_answer)
+  player_answer == @evaluated_equation
+end
+
+def get_player_answer
+  gets.chomp.to_i
+end
 
 def wrong_answer
   @lives_total[@current_player_is] -= 1
