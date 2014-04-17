@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <link rel='shortcut icon' href='data:image/x-icon;,' type='image/x-icon'>
+        <link rel='stylesheet' href='_assets/style.css' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css'>
+        <script src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+        <script src='_assets/assert.js'></script>
+        <title>Question #3</title>
+    </head>
+    <body>
+        <div id='container'>
+            <h1>Question #3 (25 points)</h1>
+            <div class="navigator">
+                <a class="back" href='02.html'>Question 2</a>
+                <div class="list">
+                    <a href='index.html'>List</a>
+                </div>
+                <a class="fwd" href='04.html'>Question 4</a>
+            </div>
+            <!-- ----------------------------------------- -->
+
+            <p>Write a function called <code>findLongestWord</code> that takes in an array of words, and returns the longest one. If there are more than one words that are the largest, returning any of them is fine.</p>
+            <p>Once you have written the correct solution in the dedicated area, the failing tests below will succeed.</p>
+
+            <p>Edit the page source to begin.</p>
+
+        </div>
+        <script>
+
+        $(document).ready(function() {
+
+            /**** YOU MAY MODIFY THE CODE BELOW ****/
+
+            function findLongestWord(words) {
+              return words.sort(function (word1, word2) { 
+                return word2.length - word1.length; 
+              })[0];
+            }
+
+            /**** STOP MODIFYING HERE. ****/
+
+            /*
+              NOTE:
+              The code below is for you and us to verify that your function is working correctly.
+              It's what makes the red/pink boxes on the page. The goal is to make them green by making the
+              assertion pass. Please do not modify the code below.
+            */
+
+            assert(findLongestWord(['cleopatra', 'ceasar', 'idefix']) == 'cleopatra');
+            assert(findLongestWord(['tintin', 'haddock', 'castafiore']) == 'castafiore');
+            assert(findLongestWord(['a']) == 'a');
+        });
+
+        </script>
+    <body>
+</html>

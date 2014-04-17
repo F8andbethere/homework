@@ -310,19 +310,20 @@ SELECT DISTINCT     b.title AS "TITLE"
   FROM books AS b JOIN editions AS e
   ON (b.id = e.book_id)
 
-  WHERE e.type IN ('h') AND e.type IN ('h')
+  WHERE e.type IN ('h') OR e.type IN ('p')
 ;
 
 13.
 For each publisher, list their average book sale price, number of editions published.
 
 SELECT        p.name AS "PUBLISHER",
-              SUM(e.edition) AS "EDITIONS PUBLISHED",
+              COUNT(e.edition) AS "EDITIONS PUBLISHED",
               ROUND(AVG(s.retail), 2) AS "AVERAGE SALE PRICE OF BOOKS"
-  FROM publishers AS p JOIN editions AS e
+
+  FROM publishers AS p LEFT OUTER JOIN editions AS e
     ON(p.id = e.publisher_id)
 
-  JOIN stock AS s
+  LEFT OUTER JOIN stock AS s
     ON(e.isbn = s.isbn)
 
     GROUP BY p.name

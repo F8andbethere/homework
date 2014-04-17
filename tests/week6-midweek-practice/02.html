@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <link rel='shortcut icon' href='data:image/x-icon;,' type='image/x-icon'> 
+        <link rel='stylesheet' href='_assets/style.css' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css'>
+        <script src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+        <script src='_assets/assert.js'></script>
+        <title>Question #2</title>
+    </head>
+    <body>
+        <div id='container'>
+            <h1>Question #2 (25 points)</h1>
+            <div class="navigator">
+                <a class="back" href='01.html'>Question 1</a>
+                <div class="list">
+                    <a href='index.html'>List</a>
+                </div>
+                <a class="fwd" href='03.html'>Question 3</a>
+            </div>
+            <!-- ----------------------------------------- -->
+
+            <p>
+                Write a function that takes in an array of values, and outputs every <strong>second</strong> element, line by line, by appending them into the Gray Box below. So you will skip the first element, append the second, skip the third, append the fourth, and so on.
+            <p>
+
+                Rules for what to output in the box:
+                <ul>
+                    <li>If the value is "Khurram", print it in green.</li>
+                    <li>Otherwise, leave it unstyled.</li>
+                </ul>
+            </p>
+            <p>Edit the page source to begin.</p>
+
+            <div class='question'>
+                <h2>Gray Box</h2>
+            </div>
+        </div>
+        <script>
+
+            $(document).ready(function() {
+
+                /**** YOU MAY MODIFY THE CODE BELOW ****/
+
+                function addItemsToGrayBox(items) {
+                    console.log(items)
+                    for(i=0; i < items.length; i++){
+                        if(items[i] === "Khurram")
+                            {
+                            $(".question").append("<p style='color:green;'>"+items[i]+"</p>")
+                            }
+                        else if (i % 2 != 0)
+                            {
+                            $(".question").append("<p>"+items[i]+"</p>")
+                            }
+
+                    }                    
+                }
+
+                /**** STOP MODIFYING HERE. ****/
+
+                addItemsToGrayBox(["Toast", "Ointment", "Lurk", "Khurram", 8, 345.3, "88"]);
+            });
+
+        </script>
+    <body>
+</html>
+
+
+
+
+

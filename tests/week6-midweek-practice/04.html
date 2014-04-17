@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <link rel='shortcut icon' href='data:image/x-icon;,' type='image/x-icon'>
+        <link rel='stylesheet' href='_assets/style.css' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css'>
+        <script src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+        <script src='_assets/assert.js'></script>
+        <title>Question #4</title>
+
+
+        <style type='text/css'>
+
+            /**** YOU MAY ADD OR MODIFY CSS BELOW ****/
+
+            .red-box {
+                height: 100px;
+                width: 100px;
+                background: red;
+
+                -webkit-transition: margin-left 2s linear, border-radius 2s linear;
+                -moz-transition: margin-left 2s linear, border-radius 2s linear;
+                -o-transition: margin-left 2s linear, border-radius 2s linear;
+                -ms-transition: margin-left 2s linear, border-radius 2s linear;
+                transition: margin-left 2s linear, border-radius 2s linear;
+            }
+
+            #red-box.animation {
+                border-radius: 100%;
+                margin-left: 300px;
+
+                -webkit-transition: margin-left 2s linear, border-radius 2s linear;
+                -moz-transition: margin-left 2s linear, border-radius 2s linear;
+                -o-transition: margin-left 2s linear, border-radius 2s linear;
+                -ms-transition: margin-left 2s linear, border-radius 2s linear;
+                transition: margin-left 2s linear, border-radius 2s linear;
+            }
+
+            /**** STOP MODIFYING HERE. ****/
+
+
+        </style>
+
+        <script type='text/javascript'>
+
+        $(document).ready(function() {
+
+            /**** YOU MAY ADD OR MODIFY CODE BELOW ****/
+
+            $(".question").on("click", "div", function(){
+                
+                $(this).addClass("animation");
+
+                setTimeout(function() {
+                    $("div").removeClass("animation");
+                }, 3000);
+            });
+
+
+            /**** STOP MODIFYING HERE. ****/
+
+        });
+
+        </script>
+    </head>
+    <body>
+        <div id='container'>
+            <h1>Question #4 (20 points + 10 bonus)</h1>
+            <div class="navigator">
+                <a class="back" href='03.html'>Question 3</a>
+                <div class="list">
+                    <a href='index.html'>List</a>
+                </div>
+                <a class="fwd" href='05.html'>Question 5</a>
+            </div>
+            <!-- ----------------------------------------- -->
+            <br />
+            <h2>Part 1 (20 points)</h2>
+            <p>
+                Make the red box such that when it is clicked, make it move towards the right by 300 pixels, and slowly turn into a circle, over a course of 2 seconds.
+            </p>
+            <p> While this can be done with jQuery's animation capabilities, for simple transitions such as this, we should use <a href="http://www.css3.info/preview/css3-transitions/">CSS3 transitions</a>. To that end, <strong>make sure to use CSS3 transitions</strong> to achieve this. Yes you will still need to write some JS/jQuery since clicking the red-box DIV needs to trigger the CSS3 transition.</p>
+            <p>Edit the page source to begin.</p>
+            <hr/>
+            <h2>Part 2 (10 BONUS points)</h2>
+            <p>
+              3 seconds after the animation is done running (so 5 seconds after the box is clicked), make the red area go back to its original state. Once again, the box/circle should be slowly animating over a course of 2 seconds.
+            </p>
+
+            <!-- You shouldn't (need to) modify this question div or its  contents -->
+            <div class='question'>
+                <h2>Red Box</h2>
+                <div class='red-box'></div>
+            </div>
+        </div>
+    <body>
+</html>

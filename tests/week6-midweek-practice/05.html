@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <link rel='shortcut icon' href='data:image/x-icon;,' type='image/x-icon'>
+        <link rel='stylesheet' href='_assets/style.css' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css'>
+        <script src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+        <script src='_assets/assert.js'></script>
+        <title>Question #5</title>
+    </head>
+    <body>
+        <div id='container'>
+            <h1>Question #5 (10 points)</h1>
+            <div class="navigator">
+                <a class="back" href='04.html'>Question 4</a>
+                <div class="list">
+                    <a href='index.html'>List</a>
+                </div>
+                <a class="fwd" href='fin.html'>Fin</a>
+            </div>
+            <!-- ----------------------------------------- -->
+
+            <p>There is a function written that returns the largest number in an array. The code doesn't seem to be running properly, since the first test is failing. Fix the code such that all tests pass.</p>
+            <p>Edit the page source to begin.</p>
+        </div>
+
+        <script>
+
+            $(document).ready(function() {
+
+
+                /**** YOU MAY MODIFY THE CODE BELOW ****/
+
+                var largest;
+
+                function findLargest(numbers) {
+                    var largest = 0;
+
+                    for(var i = 0; i < numbers.length; i++) {
+                        if(numbers[i] > largest) {
+                            largest = numbers[i];
+                        }
+
+                    }
+                    return largest;
+                }
+
+                /**** STOP MODIFYING HERE. ****/
+
+                // THERE ARE TESTS BELOW - AGAIN: DO NOT EDIT!
+                largest = findLargest([234, 33, 14, 4]);
+                largest2 = findLargest([1, 2, 3]);
+                largest3 = findLargest([333]);
+                largest4 = findLargest([1, 5, 3]);
+
+
+                assert(largest == 234);
+                assert(largest2 == 3);
+                assert(largest3 == 333);
+                assert(largest4 == 5);
+            });
+
+        </script>
+    <body>
+</html>

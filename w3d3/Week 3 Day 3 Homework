@@ -1,0 +1,133 @@
+Week 3 Day 3 Homework
+=============
+
+## Readings & References
+
+Before tackling the questions below, please go through the following learning material, in order. Please be aware though that some of the questions require you to do research beyond the material youâ€™ve been given here (such is real life!).
+
+### 1. ActiveRecord Rails Guides
+
+a. <http://guides.rubyonrails.org/active_record_basics.html>
+
+b. <http://guides.rubyonrails.org/active_record_validations.html> (reference only; tread lightly)
+
+## Questions
+
+### Question 1
+
+Why are vendors like MySQL and PostgreSQL popular if SQLite3 already exists?
+
+Performance is a bit issue. SQLite3 is a local database that needs to be "hosted" on your machine that isn't made to handle large trffic for public website and the like.
+
+SQLite3 is an embedded DB and the others are "stand-alone" databases.
+
+Mostly it had to do with ca
+
+### Question 2
+
+In the Contact list app, how specifically does the Contact class get the ability (methods) to save data to the database from the ActiveRecord library.
+
+By inheriting the ActiveRecord::Base.
+
+### Question 3
+
+Why do we choose to use an ORM instead of using SQL directly?
+
+ORM's are closer to the language they's supported by than SQL. ORM provide a lot of magic that would otherwise be a large investment of programming time.
+
+Amount of code each time you want to CRUD a particular table/model would be 10x more.
+  * More work
+  * More debugging
+
+Helps you focus on building your app in an OOP way without worrying about mundane, repetitive tasks like simple SQL CRUD statements.
+
+Helps keep code DRY.
+
+### Question 4
+
+What popular, viable alternatives exist (if any) to ActiveRecord? Anything that comes close?
+Hint: Check [Ruby Toolbox](http://www.ruby-toolbox.com)
+
+### Question 5
+
+List at least three types of validations that ActiveRecord provides us out of the box
+
+Two large alternatives:
+1. DataMapper - created alongside Merb by Yehuda Katz
+2. Sequel - lots of praise. Considerations are 
+
+### Question 6
+
+List at least three types of validations that ActiveRecord provides us out of the box
+
+1. Uniqueness
+2. String length
+3. Presence
+4. Numericality
+5. Format
+
+### Question 7
+
+What is the difference between `new`, `save` and `create` in AR?
+
+new - cretes a new entry, not saved. Initializes a new Class object, good ol' Ruby method. Nothing new. Takes in 1 hash to represent to represent the attributes (variables).
+
+save - saves an entry, Class object. Either inserts the record into the db ir updates an existing one. This is where SQL is actually executed vs in new it is not.
+
+create - makes a new db object then saves it to the db.
+
+### Question 8
+
+What is the difference between `create` and `create!` (or `save` and `save!`) in AR?
+
+The '!' raises an exception when the record is invalid.
+
+### Question 9
+
+Why are there two different ways of using built-in validations in AR?
+
+Example: `validates_presence_of :email` vs `validates :email, presence: true`
+
+Versions of code, the different syntaxes handle multi vs single validation attributes.
+
+One is good for specifying specifying multiple attributes for a given validator vs the other is good for specifying multiple calufators on a given attribute. the latter is also newer and preferred.
+
+One is 
+
+### Question 10
+
+When do validation checks get triggered on an instance of an AR model?
+
+Most common is right before save (update or insert).
+
+'save' triggers 'valid?'
+
+def save
+  if valid?
+    db_save
+  end
+end
+
+### Question 11
+
+How do you check what the validation errors are after a validation check fails?
+
+AR gives us an error method to iterate over, it conviniently has a full_messages method to give us nice messages that we can report back tot eh user trying to create the record.
+
+Example code:
+
+    if contact.szve
+      puts 'YAY!'
+    else
+      contact.errors.full_messages.each do |msg|
+        puts msg
+      end
+    end
+
+### Question 12
+
+After the following code is run the customer will get destroyed (deleted) from the database. Will customer become nil after this happens? If not, then what happens to it?
+
+    customer.destroy
+
+Freezes the model instance but you can still access it's contents. It remains in memory.

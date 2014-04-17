@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <link rel='shortcut icon' href='data:image/x-icon;,' type='image/x-icon'> 
+        <link rel='stylesheet' href='_assets/style.css' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css'>
+        <script src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+        <script src='_assets/assert.js'></script>
+        <title>Question #1</title>
+    </head>
+    <body>
+        <div id='container'>
+            <h1>Question #1 (20 points)</h1>
+            <div class="navigator">
+                <a class="back" href='index.html'>Back to list</a>
+                <a class="fwd" href='02.html'>Question 2</a>
+            </div>
+            <!-- ----------------------------------------- -->
+
+            <p>Modify the jQuery code running on this page such that when the user clicks "The Button", the browser alerts the user with the text "You have clicked The Button."</p>
+            <p>Make sure that nothing happens when "Not The Button" is clicked.</p>
+            <p>Edit the page source to begin.</p>
+
+            <div class='question'>
+
+                <!-- YOU MAY MODIFY THE HTML BELOW -->
+
+                    <button class="something-happens-btn">The Button</button>
+                    <br /><br />
+                    <button>Not The Button</button>
+
+                <!-- STOP MODIFYING HERE. -->
+            </div>
+        </div>
+        <script>
+
+        $(document).ready(function() {
+
+            /**** YOU MAY MODIFY THE CODE BELOW ****/
+            $("body").on("click", ".something-happens-btn", function(){
+                alert("You have clicked The Btn")
+            });
+            /**** STOP MODIFYING HERE. ****/
+        });
+                
+        </script>
+    <body>
+</html>
+
+
+
+
